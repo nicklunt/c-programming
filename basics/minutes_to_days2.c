@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
+// Using all ints, seems cleaner and obvs less memory usage.
+
 int main(int argc, char *argv[]) {
     // convert minutes to days
 
