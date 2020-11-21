@@ -6,9 +6,9 @@
 int main(int argc, char *argv[]) {
     // convert minutes to days
 
-    int days = 0.0f;
-    int hours = 0.0f;
-    int hours_left = 0.0f;
+    int days = 0;
+    int hours = 0;
+    int hours_left = 0;
     int mins = 0;
     int mins_left = 0;
 
