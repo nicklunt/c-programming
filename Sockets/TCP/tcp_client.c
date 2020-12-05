@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
+#include <unistd.h>
 #include "mysockets.h"
 
 int main(int argc, char *argv[]) {
@@ -32,14 +33,17 @@ int main(int argc, char *argv[]) {
     }
 
     // receive data from the server
-    char server_response[256];
+    char server_response[BUFSIZ];
     recv(network_socket, &server_response, sizeof(server_response), 0);
 
-    // print the servers response
-    printf("The server sent the data: \n\t'%s'\n", server_response);
-
     // close the socket
+    //shutdown(network_socket, SHUT_RDWR);
     close(network_socket);
+
+    // print the servers response
+    printf("The server sent: \t%s\n", server_response);
+
+
 
     return 0;
 }

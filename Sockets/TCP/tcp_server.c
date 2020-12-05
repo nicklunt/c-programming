@@ -5,17 +5,18 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
+#include <unistd.h>
 #include "mysockets.h"
 
 int main(int argc, char *argv[]) {
 
-    char server_message[256] = "You have reached the server!";
+    char server_message[] = "You have reached the server!";
 
     // create TCP server socket
     int server_socket;
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
-    // define the server address
+    // define the server address. sockaddr_in is a struct used in the bind below
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(PORT);
@@ -42,6 +43,7 @@ int main(int argc, char *argv[]) {
     send(client_socket, server_message, sizeof(server_message), 0);
 
     // close the socket
+    // shutdown(server_socket, SHUT_RDWR);
     close(server_socket);
 
     return 0;
